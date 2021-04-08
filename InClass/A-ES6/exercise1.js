@@ -8,7 +8,9 @@ const defaultParameter = (name = "sam") => { name }
 const combineArrays = [...arr1, arr2];
 
 //use destructuring to return the object's cyf property
-const destructuring = (obj) => { obj.cyf }
+const destructuring = (obj) => { obj.cyf };
+// or?
+const { cyf } = obj;
 
 // use template literal to return a string with the sum of a and b
 const templateString = (a, b) => { `The sum is equal to ${(a + b).toString()}` }
