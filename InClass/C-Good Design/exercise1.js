@@ -39,34 +39,64 @@
    
    */
 
+// function myFunction(salary, taxCode, incomeTax1, incomeTax2) {
+//    var totalIncomeTax = incomeTax1 + incomeTax2;
+//    var studentLoan = (salary - 17775) * 0.09;
+//    var originalSalary = salary;
+//    var nationalInsurance = null;
 
-function myFunction(salary, taxCode, incomeTax1, incomeTax2, ownsCar) {
-  var totalIncomeTax = incomeTax1 + incomeTax2;
-  var studentLoan = (salary - 17775) * 0.09;
-  var originalSalary = salary;
-  var nationalInsurance = null;
+//    if (taxCode === "1150L") {
+//       nationalInsurance = salary * 0.1;
+//    } else if (taxCode === "ST") {
+//       nationalInsurance = salary * 0.05;
+//    } else {
+//       nationalInsurance = salary * 0.08;
+//    }
 
-  if (taxCode === "1150L") {
-    nationalInsurance = salary * 0.1;
-  } else if (taxCode === "ST") {
-    nationalInsurance = salary * 0.05;
-  } else {
-    nationalInsurance = salary * 0.08;
-  }
+//    var deductions = [nationalInsurance, totalIncomeTax, studentLoan];
 
-  var deductions = [nationalInsurance, totalIncomeTax, studentLoan];
+//    salary = salary - deductions[0];
+//    salary = salary - deductions[1];
+//    salary = salary - deductions[2];
 
-  salary = salary - deductions[0];
-  salary = salary - deductions[1];
-  salary = salary - deductions[2];
+//    return (
+//       "Your gross income is $" +
+//       originalSalary.toString() +
+//       " and your net income is $" +
+//       salary.toString() +
+//       "."
+//    );
+// }
 
-  return (
-    "Your gross income is £" +
-    originalSalary.toString() +
-    " and your net income is £" +
-    salary.toString() +
-    "."
-  );
+// console.log(myFunction(28000, "1150L", 1000, 580));
+
+const A = 0.1;
+const B = 0.05;
+const C = 0.08;
+const X = 17775;
+const Y = 0.09;
+const TC1 = "1150L";
+const TC2 = "ST";
+
+const nationalInsurance = (salary, taxCode) => {
+   if (taxCode === TC1) {
+      return salary * A;
+   } else if (taxCode === TC2) {
+      return salary * B;
+   }
+   return salary * C;
 }
 
-console.log(myFunction(28000, "1150L", 1000, 580, false));
+const salaryDeductions = (incomeTax) => {
+   var total = 0;
+   incomeTax.forEach(tax => total += tax);
+   return total;
+}
+
+const studentLoan = (salary) => (salary - X) * Y;
+const calcIncome = (salary, taxCode, incomeTax) => {
+   netSalary = salary - nationalInsurance(salary, taxCode) - salaryDeductions(incomeTax) - studentLoan(salary);
+   return `Your gross income is $${salary.toString()} and your net income is $${netSalary.toString()}.`;
+}
+
+console.log(calcIncome(28000, "1150L", [1000, 580]));
