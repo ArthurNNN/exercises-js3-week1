@@ -2,6 +2,7 @@ const getRepos = function (repoName) {
   return fetch('https://api.github.com/users/' + repoName + '/repos')
     .then(data => data.json())
     .then(function (response) {
+      var myElement = document.querySelector("#main");
       return response.map(function (rep) {
         console.log(rep.name);
         var paragraph = document.createElement("p");
@@ -12,7 +13,7 @@ const getRepos = function (repoName) {
     });
 };
 
-var myElement = document.querySelector("#main");
+
 const migracodeRepos = getRepos('migracode-barcelona');
 console.log("Loading...");
 
