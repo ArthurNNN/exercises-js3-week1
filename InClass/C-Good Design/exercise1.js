@@ -70,6 +70,8 @@
 
 // console.log(myFunction(28000, "1150L", 1000, 580));
 
+
+// Set constants
 const A = 0.1;
 const B = 0.05;
 const C = 0.08;
@@ -78,6 +80,7 @@ const Y = 0.09;
 const TC1 = "1150L";
 const TC2 = "ST";
 
+// Calculation of national insurance
 const nationalInsurance = (salary, taxCode) => {
    if (taxCode === TC1) {
       return salary * A;
@@ -87,16 +90,20 @@ const nationalInsurance = (salary, taxCode) => {
    return salary * C;
 }
 
+// Calculation of salary deductions
 const salaryDeductions = (incomeTax) => {
    var total = 0;
    incomeTax.forEach(tax => total += tax);
    return total;
 }
 
+// Calculation of student loan
 const studentLoan = (salary) => (salary - X) * Y;
-const calcIncome = (salary, taxCode, incomeTax) => {
+
+// Calculation of net income and ouput 
+const calcAndOutputIncome = (salary, taxCode, incomeTax) => {
    netSalary = salary - nationalInsurance(salary, taxCode) - salaryDeductions(incomeTax) - studentLoan(salary);
    return `Your gross income is $${salary.toString()} and your net income is $${netSalary.toString()}.`;
 }
 
-console.log(calcIncome(28000, "1150L", [1000, 580]));
+console.log(calcAndOutputIncome(28000, "1150L", [1000, 580]));
