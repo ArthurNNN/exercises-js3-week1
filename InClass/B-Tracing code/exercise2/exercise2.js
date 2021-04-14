@@ -20,13 +20,9 @@ function removeVowels(word) {
   return result.join("");
 }
 
-function removeVowelsForWords(words) {
-  var result = words.map(function (word) {
-    return removeVowels(word);
-  });
+const removeVowelsForWords = (words) => words.map((word) => removeVowels(word));
 
-  return result;
-}
+
 
 /*
   Task 1
